@@ -107,9 +107,12 @@ void BMW_E65Class::DashOn()
     bytes[0]=0x61;  //sets max rpm on tach (temp thing)
     bytes[1]=0x82;
 
-    for (int i = 0; i < 3; i++)
+    if (!this->dashInit)
     {
-        Can::GetInterface(1)->Send(0x332, (uint32_t*)bytes,2); //Send on CAN2
+        for (int i = 0; i < 3; i++)
+        {
+            Can::GetInterface(1)->Send(0x332, (uint32_t*)bytes,2); //Send on CAN2
+        }
     }
     this->dashInit=true;
 
