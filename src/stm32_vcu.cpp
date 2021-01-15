@@ -373,9 +373,15 @@ static void Ms100Task(void)
     }
     if(targetVehicle == _vehmodes::BMW_E65)
     {
-
-        E65Vehicle.DashOn();
-        Param::SetInt(Param::T15Stat,E65Vehicle.getTerminal15());
+        if (E65Vehicle.getTerminal15())
+        {
+            E65Vehicle.DashOn();
+            Param::SetInt(Param::T15Stat,1);
+        }
+        else
+        {
+            Param::SetInt(Param::T15Stat,0);
+        }
     }
     else
     {
