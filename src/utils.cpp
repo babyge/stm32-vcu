@@ -110,10 +110,10 @@ void utils::SelectDirection(_vehmodes targetVehicle, BMW_E65Class E65Vehicle)
             selectedDir = 0; // Park
             break;
         case 1:
-            selectedDir = 0; // Neutral
+            selectedDir = -1; // Reverse
             break;
         case 2:
-            selectedDir = -1; // Reverse
+            selectedDir = 0; // Neutral
             break;
         case 3:
             selectedDir = 1; // Drive
