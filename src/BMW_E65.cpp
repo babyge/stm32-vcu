@@ -33,9 +33,15 @@ void BMW_E65Class::Cas(int id, uint32_t data[2], uint32_t time)
     uint8_t* bytes = (uint8_t*)data;// arrgghhh this converts the two 32bit array into bytes. See comments are useful:)
     if(id==0x130)
     {
-        if(bytes[0] == 0x45) T15Status=true; //if the cas sends 0x45 in byte 0 of id 0x130 we have a run command
-        else T15Status=false;
-
+        if ((bytes[0] == 0x45) || (bytes[0] == 0x55))
+        {
+            // 0x45 is run, 0x55 is engine crank request
+            T15Status=true;
+        }
+        else
+        {
+            T15Status=false;
+        }
         this->setTerminal15(T15Status);
     }
     return;
