@@ -62,7 +62,7 @@ void BMW_E65Class::Gear(int id, uint32_t data[2], uint32_t time)
             break;
 
         case 0x80506a:  //park button pressed
-            gear=PARK;
+            this->gear=PARK;
             gear_BA=0x03;
             shiftPos=0xe1;
             break;
@@ -70,7 +70,7 @@ void BMW_E65Class::Gear(int id, uint32_t data[2], uint32_t time)
 
             break;
         case 0x80042d: //R+ position
-            gear=REVERSE;
+            this->gear=REVERSE;
             gear_BA=0x02;
             shiftPos=0xd2;
             break;
@@ -78,7 +78,7 @@ void BMW_E65Class::Gear(int id, uint32_t data[2], uint32_t time)
 
             break;
         case 0x800374:  //D+ pressed
-            gear=DRIVE;
+            this->gear=DRIVE;
             gear_BA=0x08;
             shiftPos=0x78;
             break;
